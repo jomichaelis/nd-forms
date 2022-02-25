@@ -55,11 +55,16 @@ class ND_Forms_Public {
 	}
 
 	public function register_shortcodes() {
-		add_shortcode( 'nd_forms_lulags_table', array( $this, 'shortcode_nd_forms_lulags') );
+		add_shortcode( 'nd_forms_lulags_table', array( $this, 'shortcode_nd_forms_lulags_table') );
+		add_shortcode( 'nd_forms_lulags_form', array( $this, 'shortcode_nd_forms_lulags_form') );
 	}
 
-	public function shortcode_nd_forms_lulags() {
+	public function shortcode_nd_forms_lulags_table() {
 		include( plugin_dir_path( __FILE__ ) . 'partials/shortcode-nd-forms-lulags-table.php' );
+	}
+
+	public function shortcode_nd_forms_lulags_form() {
+		include( plugin_dir_path( __FILE__ ) . 'partials/shortcode-nd-forms-lulags-form.php' );
 	}
 
 }

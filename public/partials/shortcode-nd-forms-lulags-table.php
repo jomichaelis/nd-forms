@@ -6,7 +6,7 @@ global $wpdb;
 // Tabellendefinition
 $table = $wpdb->prefix . 'nd_forms_lulags';
 
-$result = $wpdb->get_results( 'SELECT * FROM ' . $table . ' WHERE published = 1' );
+$result = $wpdb->get_results( 'SELECT * FROM ' . $table . ' WHERE published = 1 ORDER BY title' );
 
 ?>
 <figure class="wp-block-table is-style-stripes">
