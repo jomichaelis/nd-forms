@@ -26,5 +26,8 @@ class ND_Forms_Uninstaller {
 		$table_name = $wpdb->prefix . "nd_forms_lulags";
 		$sql = "DROP TABLE IF EXISTS $table_name";
 		$wpdb->query($sql);
+		$table_name = $wpdb->prefix . "nd_forms_lulags_signins";
+		$sql = "DROP TABLE IF EXISTS $table_name";
+		$wpdb->query($sql);
 	}
 }

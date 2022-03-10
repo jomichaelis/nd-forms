@@ -65,16 +65,11 @@ function _insert_LulagsRecord( $args = array() ) {
 
 	$defaults = array(
 		'id'			=> null,
-		'status'    	=> 0,
-		'published'    	=> 0,
 		'title'			=> '',
 		'description' 	=> '',
 		'event_type'   	=> 0,
 		'group_type'  	=> 0,
 		'attendees'   	=> 0,
-		'host_name'    	=> '',
-		'host_mail'    	=> '',
-		'host_stamm'    => ''
 	);
 
 	$args       = wp_parse_args( $args, $defaults );

@@ -1,32 +1,28 @@
 <?php
-$action = isset( $_GET['action'] ) ? $_GET['action'] : 'list';
-$page   = isset( $_GET['page'] ) ? $_GET['page'] : 0;
-$id     = isset( $_GET['id'] ) ? intval( $_GET['id'] ) : 0;
+//Get the active tab from the $_GET param
+$default_subtab = null;
+$subtab = isset($_GET['subtab']) ? $_GET['subtab'] : $default_subtab;
+$action = isset( $_GET['action'] ) ? $_GET['action'] : '';
 
-$template = '';
-
-switch ($action) {
-	case 'edit':
-		$template = dirname( __FILE__ ) . '/views/edit.php';
-		break;
-
-	case 'new':
-		$template = dirname( __FILE__ ) . '/views/new.php';
-		break;
-
-	case 'delete':
-		_delete_LulagsRecord( $id );
-		$template = dirname( __FILE__ ) . '/views/list.php';
-		break;
-
-	default:
-		$template = dirname( __FILE__ ) . '/views/list.php';
-		break;
-}
-
-if ( file_exists( $template ) ) {
-	include $template;
-} else {
-	echo "something went wrong";
-}
 ?>
+<!-- Our admin page content should all be inside .wrap -->
+<div class="wrap">
+	<h1>Land & Leute Aktionen und AGs</h1>
+	<!-- Here are our tabs -->
+	<nav class="nav-tab-wrapper">
+		<a href="?page=nd-forms&tab=lulags" class="nav-tab <?php if($subtab===null):?>nav-tab-active<?php endif; ?>">Einträge</a>
+		<a href="?page=nd-forms&tab=lulags&subtab=vorschlaege" class="nav-tab <?php if($subtab==='vorschlaege'):?>nav-tab-active<?php endif; ?>">Vorschläge</a>
+	</nav>
+
+	<div class="tab-content">
+		<?php
+		switch($subtab) :
+			case 'vorschlaege':
+				include dirname(__FILE__) . '/vorschlaege/main-view.php';
+				break;
+			default:
+				include dirname(__FILE__) . '/angebote/main-view.php';
+				break;
+		endswitch; ?>
+	</div>
+</div>

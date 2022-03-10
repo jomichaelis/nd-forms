@@ -24,6 +24,7 @@ class ND_Forms_Activator {
 
 	public static function activate() {
 		self::create_table_nd_forms_lulags();
+		self::create_table_nd_forms_lulags_suggestions();
 	}
 
 	private static function create_table_nd_forms_lulags() {
@@ -32,16 +33,32 @@ class ND_Forms_Activator {
 		$charset_collate = $wpdb->get_charset_collate();
 		$sql = "CREATE TABLE IF NOT EXISTS $table_name (
 			id mediumint(9) NOT NULL AUTO_INCREMENT,
-  			status tinyint NOT NULL DEFAULT 0,
+  			suggestion mediumint(9) NOT NULL DEFAULT 0,
+    		title text NOT NULL DEFAULT '',
+  			description text NOT NULL DEFAULT '',
+    		event_type tinyint NOT NULL DEFAULT 0,
+  			group_type text NOT NULL DEFAULT '',
+    		attendees tinyint NOT NULL DEFAULT 0,
+    		host_name text NOT NULL DEFAULT '',
+    		host_mail text NOT NULL DEFAULT '',
+    		host_stamm text NOT NULL DEFAULT '',
+  			PRIMARY KEY  (id)
+		) $charset_collate;";
+		require_once( ABSPATH . 'wp-admin/includes/upgrade.php' );
+		dbDelta( $sql );
+	}
+
+	private static function create_table_nd_forms_lulags_suggestions() {
+		global $wpdb;
+		$table_name = $wpdb->prefix."nd_forms_lulags_suggestions";
+		$charset_collate = $wpdb->get_charset_collate();
+		$sql = "CREATE TABLE IF NOT EXISTS $table_name (
+			id mediumint(9) NOT NULL AUTO_INCREMENT,
     		published tinyint NOT NULL DEFAULT 0,
   			title text NOT NULL DEFAULT '',
   			description text NOT NULL DEFAULT '',
     		event_type tinyint NOT NULL DEFAULT 0,
   			group_type text NOT NULL DEFAULT '',
-    		attendees tinyint NOT NULL DEFAULT 0,
-    		host_name text NOT NULL DEFAULT '',,
-    		host_mail text NOT NULL DEFAULT '',,
-    		host_stamm text NOT NULL DEFAULT '',,
   			PRIMARY KEY  (id)
 		) $charset_collate;";
 		require_once( ABSPATH . 'wp-admin/includes/upgrade.php' );

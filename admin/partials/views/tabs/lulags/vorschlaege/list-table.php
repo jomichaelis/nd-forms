@@ -7,12 +7,12 @@ if ( ! class_exists ( 'WP_List_Table' ) ) {
 /**
  * List table class
  */
-class ND_Forms_Lulags_List extends \WP_List_Table {
+class ND_Forms_Lulags_Suggestion_List extends \WP_List_Table {
 
 	function __construct() {
 		parent::__construct( array(
-			'singular' => 'LulagsRecord',
-			'plural'   => 'LulagsRecords',
+			'singular' => 'LulagsSuggestionRecord',
+			'plural'   => 'LulagsSuggestionRecords',
 			'ajax'     => false
 		) );
 	}
@@ -41,6 +41,8 @@ class ND_Forms_Lulags_List extends \WP_List_Table {
 	function column_default( $item, $column_name ) {
 
 		switch ( $column_name ) {
+			case 'published':
+				return $item->published;
 			case 'title':
 				return $item->title;
 			case 'description':
@@ -49,18 +51,6 @@ class ND_Forms_Lulags_List extends \WP_List_Table {
 				return $item->event_type;
 			case 'group_type':
 				return $item->group_type;
-			case 'status':
-				return $item->status;
-			case 'attendees':
-				return $item->attendees;
-			case 'host_name':
-				return $item->host_name;
-			case 'host_mail':
-				return $item->host_mail;
-			case 'host_stamm':
-				return $item->host_stamm;
-			case 'published':
-				return $item->published;
 			default:
 				return isset( $item->$column_name ) ? $item->$column_name : '';
 		}
@@ -73,16 +63,11 @@ class ND_Forms_Lulags_List extends \WP_List_Table {
 	 */
 	function get_columns() {
 		$columns = array(
-			'status'    	=> 'Status',
 			'published'    	=> 'öffentlich',
 			'title'			=> 'Kurzbeschreibung',
 			'description' 	=> 'Beschreibung',
 			'event_type'   	=> 'Ereignis-Typ',
-			'group_type'  	=> 'Altersstufe',
-			'attendees'   	=> 'TN-Anzahl',
-			'host_name'    	=> 'Verantwortliche*r',
-			'host_mail'    	=> 'Mail',
-			'host_stamm'    => 'Stamm'
+			'group_type'  	=> 'Altersstufe'
 		);
 
 		return $columns;
@@ -97,13 +82,13 @@ class ND_Forms_Lulags_List extends \WP_List_Table {
 	 */
 	function column_title( $item ) {
 
-		$delete_nonce = wp_create_nonce( 'nd-forms-lulags-delete' );
+		$delete_nonce = wp_create_nonce( 'nd-forms-lulags-suggestion-delete' );
 
 		$actions           = array();
-		$actions['edit']   = sprintf( '<a href="%s" data-id="%d" title="%s">%s</a>', admin_url( 'admin.php?page=nd-forms&tab=lulags&action=edit&id=' . $item->id ), $item->id, 'Edit this item', 'Bearbeiten' );
-		$actions['delete'] = sprintf( '<a href="?page=%s&tab=%s&action=%s&id=%s&_wpnonce=%s" onclick="return confirm(\'Ganz sicher löschen?\')">Löschen</a>', esc_attr( $_REQUEST['page'] ), 'lulags', 'delete', absint( $item->id ), $delete_nonce );
+		$actions['edit']   = sprintf( '<a href="%s" data-id="%d" title="%s">%s</a>', admin_url( 'admin.php?page=nd-forms&tab=lulags&subtab=vorschlaege&action=edit&id=' . $item->id ), $item->id, 'Edit this item', 'Bearbeiten' );
+		$actions['delete'] = sprintf( '<a href="?page=%s&tab=%s&subtab=%s&action=%s&id=%s&_wpnonce=%s" onclick="return confirm(\'Ganz sicher löschen?\')">Löschen</a>', esc_attr( $_REQUEST['page'] ), 'lulags', 'vorschlaege', 'delete', absint( $item->id ), $delete_nonce );
 
-		return sprintf( '<a href="%1$s"><strong>%2$s</strong></a> %3$s', admin_url( 'admin.php?page=nd-forms&tab=lulags&action=edit&id=' . $item->id ), stripslashes( $item->title ), $this->row_actions( $actions ) );
+		return sprintf( '<a href="%1$s"><strong>%2$s</strong></a> %3$s', admin_url( 'admin.php?page=nd-forms&tab=lulags&subtab=vorschlaege&action=edit&id=' . $item->id ), stripslashes( $item->title ), $this->row_actions( $actions ) );
 	}
 
 	/**
@@ -185,7 +170,6 @@ class ND_Forms_Lulags_List extends \WP_List_Table {
 	 */
 	public function get_sortable_columns() {
 		$sortable_columns = array(
-			'status' 		=> array( 'status', true ),
 			'published' 	=> array( 'published', true ),
 			'title' 		=> array( 'title', false ),
 			'event_type' 	=> array( 'event_type', false ),
@@ -223,7 +207,7 @@ class ND_Forms_Lulags_List extends \WP_List_Table {
 		$sortable              = $this->get_sortable_columns();
 		$this->_column_headers = array( $columns, $hidden, $sortable );
 
-		$per_page              = 20;
+		$per_page              = 100;
 		$current_page          = $this->get_pagenum();
 		$offset                = ( $current_page -1 ) * $per_page;
 		$this->page_status     = isset( $_GET['status'] ) ? sanitize_text_field( $_GET['status'] ) : '2';
@@ -239,10 +223,10 @@ class ND_Forms_Lulags_List extends \WP_List_Table {
 			$args['order']   = $_REQUEST['order'] ;
 		}
 
-		$this->items  = _get_all_LulagsRecord( $args );
+		$this->items  = _get_all_LulagsSuggestionRecords( $args );
 
 		$this->set_pagination_args( array(
-			'total_items' => _get_LulagsRecord_count(),
+			'total_items' => _get_LulagsSuggestionRecord_count(),
 			'per_page'    => $per_page
 		) );
 	}

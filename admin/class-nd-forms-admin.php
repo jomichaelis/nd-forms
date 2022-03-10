@@ -102,9 +102,12 @@ class ND_Forms_Admin {
 
 	public function include_menu() {
 		require_once plugin_dir_path(dirname(__FILE__)) . 'admin/partials/nd-forms-menu.php';
-		require_once plugin_dir_path(dirname(__FILE__)) . 'admin/partials/views/tabs/lulags/form-handler.php';
-		require_once plugin_dir_path(dirname(__FILE__)) . 'admin/partials/views/tabs/lulags/list-table.php';
-		require_once plugin_dir_path(dirname(__FILE__)) . 'admin/partials/views/tabs/lulags/functions.php';
+		require_once plugin_dir_path(dirname(__FILE__)) . 'admin/partials/views/tabs/lulags/angebote/form-handler.php';
+		require_once plugin_dir_path(dirname(__FILE__)) . 'admin/partials/views/tabs/lulags/angebote/list-table.php';
+		require_once plugin_dir_path(dirname(__FILE__)) . 'admin/partials/views/tabs/lulags/angebote/functions.php';
+		require_once plugin_dir_path(dirname(__FILE__)) . 'admin/partials/views/tabs/lulags/vorschlaege/form-handler.php';
+		require_once plugin_dir_path(dirname(__FILE__)) . 'admin/partials/views/tabs/lulags/vorschlaege/list-table.php';
+		require_once plugin_dir_path(dirname(__FILE__)) . 'admin/partials/views/tabs/lulags/vorschlaege/functions.php';
 		new ND_Forms_Menu();
 	}
 	/*

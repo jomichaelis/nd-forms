@@ -60,11 +60,15 @@ class ND_Forms_Public {
 	}
 
 	public function shortcode_nd_forms_lulags_table() {
+		ob_start();
 		include( plugin_dir_path( __FILE__ ) . 'partials/shortcode-nd-forms-lulags-table.php' );
+		return ob_get_clean();
 	}
 
 	public function shortcode_nd_forms_lulags_form() {
+		ob_start();
 		include( plugin_dir_path( __FILE__ ) . 'partials/shortcode-nd-forms-lulags-form.php' );
+		return ob_get_clean();
 	}
 
 }
