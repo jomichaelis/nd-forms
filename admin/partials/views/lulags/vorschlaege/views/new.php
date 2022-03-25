@@ -41,12 +41,12 @@
                         </select>
                     </td>
                 </tr>
-                <tr class="row-group-type">
+                <tr class="row-attendees">
                     <th scope="row">
-                        <label for="group_type">Altersgruppe</label>
+                        <label for="attendees">TN-Anzahl</label>
                     </th>
                     <td>
-                        <input type="text" name="group_type" id="group_type" class="regular-text" placeholder="z.B. Sipplinge, Rover" value="" />
+                        <input type="number" name="attendees" id="attendees" value=0 min=0 />
                     </td>
                 </tr>
             </tbody>

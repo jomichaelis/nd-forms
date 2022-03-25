@@ -49,8 +49,10 @@ class ND_Forms_Lulags_Suggestion_List extends \WP_List_Table {
 				return $item->description;
 			case 'event_type':
 				return $item->event_type;
-			case 'group_type':
-				return $item->group_type;
+			case 'altersstufe':
+				return $item->altersstufe;
+			case 'attendees':
+				return $item->attendees;
 			default:
 				return isset( $item->$column_name ) ? $item->$column_name : '';
 		}
@@ -67,7 +69,8 @@ class ND_Forms_Lulags_Suggestion_List extends \WP_List_Table {
 			'title'			=> 'Kurzbeschreibung',
 			'description' 	=> 'Beschreibung',
 			'event_type'   	=> 'Ereignis-Typ',
-			'group_type'  	=> 'Altersstufe'
+			'altersstufe'  	=> 'Altersstufe',
+			'attendees'  	=> 'max. Teilnehmer',
 		);
 
 		return $columns;
@@ -85,10 +88,10 @@ class ND_Forms_Lulags_Suggestion_List extends \WP_List_Table {
 		$delete_nonce = wp_create_nonce( 'nd-forms-lulags-suggestion-delete' );
 
 		$actions           = array();
-		$actions['edit']   = sprintf( '<a href="%s" data-id="%d" title="%s">%s</a>', admin_url( 'admin.php?page=nd-forms&tab=lulags&subtab=vorschlaege&action=edit&id=' . $item->id ), $item->id, 'Edit this item', 'Bearbeiten' );
-		$actions['delete'] = sprintf( '<a href="?page=%s&tab=%s&subtab=%s&action=%s&id=%s&_wpnonce=%s" onclick="return confirm(\'Ganz sicher löschen?\')">Löschen</a>', esc_attr( $_REQUEST['page'] ), 'lulags', 'vorschlaege', 'delete', absint( $item->id ), $delete_nonce );
+		$actions['edit']   = sprintf( '<a href="%s" data-id="%d" title="%s">%s</a>', admin_url( 'admin.php?page=nd-forms-lulags&tab=vorschlaege&action=edit&id=' . $item->id ), $item->id, 'Edit this item', 'Bearbeiten' );
+		$actions['delete'] = sprintf( '<a href="?page=%s&tab=%s&action=%s&id=%s&_wpnonce=%s" onclick="return confirm(\'Ganz sicher löschen?\')">Löschen</a>', esc_attr( $_REQUEST['page'] ), 'vorschlaege', 'delete', absint( $item->id ), $delete_nonce );
 
-		return sprintf( '<a href="%1$s"><strong>%2$s</strong></a> %3$s', admin_url( 'admin.php?page=nd-forms&tab=lulags&subtab=vorschlaege&action=edit&id=' . $item->id ), stripslashes( $item->title ), $this->row_actions( $actions ) );
+		return sprintf( '<a href="%1$s"><strong>%2$s</strong></a> %3$s', admin_url( 'admin.php?page=nd-forms-lulags&tab=vorschlaege&action=edit&id=' . $item->id ), stripslashes( $item->title ), $this->row_actions( $actions ) );
 	}
 
 	/**
@@ -173,7 +176,8 @@ class ND_Forms_Lulags_Suggestion_List extends \WP_List_Table {
 			'published' 	=> array( 'published', true ),
 			'title' 		=> array( 'title', false ),
 			'event_type' 	=> array( 'event_type', false ),
-			'group_type' 	=> array( 'group_type', false )
+			'altersstufe' 	=> array( 'altersstufe', false ),
+			'attendees' 	=> array( 'attendees', false )
 		);
 		return $sortable_columns;
 	}

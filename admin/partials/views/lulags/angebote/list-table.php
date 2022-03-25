@@ -47,8 +47,8 @@ class ND_Forms_Lulags_List extends \WP_List_Table {
 				return $item->description;
 			case 'event_type':
 				return $item->event_type;
-			case 'group_type':
-				return $item->group_type;
+			case 'altersstufe':
+				return $item->altersstufe;
 			case 'attendees':
 				return $item->attendees;
 			case 'host_name':
@@ -73,7 +73,7 @@ class ND_Forms_Lulags_List extends \WP_List_Table {
 			'title'			=> 'Kurzbeschreibung',
 			'description' 	=> 'Beschreibung',
 			'event_type'   	=> 'Ereignis-Typ',
-			'group_type'  	=> 'Altersstufe',
+			'altersstufe'  	=> 'Altersstufe',
 			'attendees'   	=> 'TN-Anzahl',
 			'host_name'    	=> 'Verantwortliche*r',
 			'host_mail'    	=> 'Mail',
@@ -95,10 +95,10 @@ class ND_Forms_Lulags_List extends \WP_List_Table {
 		$delete_nonce = wp_create_nonce( 'nd-forms-lulags-delete' );
 
 		$actions           = array();
-		$actions['edit']   = sprintf( '<a href="%s" data-id="%d" title="%s">%s</a>', admin_url( 'admin.php?page=nd-forms&tab=lulags&action=edit&id=' . $item->id ), $item->id, 'Edit this item', 'Bearbeiten' );
-		$actions['delete'] = sprintf( '<a href="?page=%s&tab=%s&action=%s&id=%s&_wpnonce=%s" onclick="return confirm(\'Ganz sicher löschen?\')">Löschen</a>', esc_attr( $_REQUEST['page'] ), 'lulags', 'delete', absint( $item->id ), $delete_nonce );
+		$actions['edit']   = sprintf( '<a href="%s" data-id="%d" title="%s">%s</a>', admin_url( 'admin.php?page=nd-forms-lulags&action=edit&id=' . $item->id ), $item->id, 'Edit this item', 'Bearbeiten' );
+		$actions['delete'] = sprintf( '<a href="?page=%s&action=%s&id=%s&_wpnonce=%s" onclick="return confirm(\'Ganz sicher löschen?\')">Löschen</a>', esc_attr( $_REQUEST['page'] ), 'delete', absint( $item->id ), $delete_nonce );
 
-		return sprintf( '<a href="%1$s"><strong>%2$s</strong></a> %3$s', admin_url( 'admin.php?page=nd-forms&tab=lulags&action=edit&id=' . $item->id ), stripslashes( $item->title ), $this->row_actions( $actions ) );
+		return sprintf( '<a href="%1$s"><strong>%2$s</strong></a> %3$s', admin_url( 'admin.php?page=nd-forms-lulags&action=edit&id=' . $item->id ), stripslashes( $item->title ), $this->row_actions( $actions ) );
 	}
 
 	/**

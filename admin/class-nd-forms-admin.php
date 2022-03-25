@@ -73,7 +73,7 @@ class ND_Forms_Admin {
 		 * class.
 		 */
 
-		wp_enqueue_style( $this->plugin_name, plugin_dir_url( __FILE__ ) . 'css/sf-chronik-admin.css', array(), $this->version, 'all' );
+		// wp_enqueue_style( $this->plugin_name, plugin_dir_url( __FILE__ ) . 'css/sf-chronik-admin.css', array(), $this->version, 'all' );
 
 	}
 
@@ -96,18 +96,18 @@ class ND_Forms_Admin {
 		 * class.
 		 */
 
-		wp_enqueue_script( $this->plugin_name, plugin_dir_url( __FILE__ ) . 'js/sf-chronik-admin.js', array( 'jquery' ), $this->version, false );
+		// wp_enqueue_script( $this->plugin_name, plugin_dir_url( __FILE__ ) . 'js/sf-chronik-admin.js', array( 'jquery' ), $this->version, false );
 
 	}
 
 	public function include_menu() {
 		require_once plugin_dir_path(dirname(__FILE__)) . 'admin/partials/nd-forms-menu.php';
-		require_once plugin_dir_path(dirname(__FILE__)) . 'admin/partials/views/tabs/lulags/angebote/form-handler.php';
-		require_once plugin_dir_path(dirname(__FILE__)) . 'admin/partials/views/tabs/lulags/angebote/list-table.php';
-		require_once plugin_dir_path(dirname(__FILE__)) . 'admin/partials/views/tabs/lulags/angebote/functions.php';
-		require_once plugin_dir_path(dirname(__FILE__)) . 'admin/partials/views/tabs/lulags/vorschlaege/form-handler.php';
-		require_once plugin_dir_path(dirname(__FILE__)) . 'admin/partials/views/tabs/lulags/vorschlaege/list-table.php';
-		require_once plugin_dir_path(dirname(__FILE__)) . 'admin/partials/views/tabs/lulags/vorschlaege/functions.php';
+		require_once plugin_dir_path(dirname(__FILE__)) . 'admin/partials/views/lulags/angebote/form-handler.php';
+		require_once plugin_dir_path(dirname(__FILE__)) . 'admin/partials/views/lulags/angebote/list-table.php';
+		require_once plugin_dir_path(dirname(__FILE__)) . 'admin/partials/views/lulags/angebote/functions.php';
+		require_once plugin_dir_path(dirname(__FILE__)) . 'admin/partials/views/lulags/vorschlaege/form-handler.php';
+		require_once plugin_dir_path(dirname(__FILE__)) . 'admin/partials/views/lulags/vorschlaege/list-table.php';
+		require_once plugin_dir_path(dirname(__FILE__)) . 'admin/partials/views/lulags/vorschlaege/functions.php';
 		new ND_Forms_Menu();
 	}
 	/*

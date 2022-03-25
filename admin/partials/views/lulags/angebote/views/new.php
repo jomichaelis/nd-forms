@@ -30,12 +30,12 @@
                         </select>
                     </td>
                 </tr>
-                <tr class="row-group-type">
+                <tr class="row-altersstufe">
                     <th scope="row">
-                        <label for="group_type">Altersgruppe</label>
+                        <label for="altersstufe">Altersgruppe</label>
                     </th>
                     <td>
-                        <input type="text" name="group_type" id="group_type" class="regular-text" placeholder="z.B. Sipplinge, Rover" value="" />
+                        <input type="text" name="altersstufe" id="altersstufe" class="regular-text" placeholder="z.B. Sipplinge, Rover" value="" />
                     </td>
                 </tr>
                 <tr class="row-attendees">
@@ -44,6 +44,30 @@
                     </th>
                     <td>
                         <input type="number" name="attendees" id="attendees" value=0 min=0 />
+                    </td>
+                </tr>
+                <tr class="row-host-name">
+                    <th scope="row">
+                        <label for="host_name">Host Name</label>
+                    </th>
+                    <td>
+                        <input type="text" name="host_name" id="host_name" class="regular-text" value="" required="required" />
+                    </td>
+                </tr>
+                <tr class="row-host-mail">
+                    <th scope="row">
+                        <label for="host_mail">Host E-Mail</label>
+                    </th>
+                    <td>
+                        <input type="email" name="host_mail" id="host_mail" class="regular-text" value="" required="required" />
+                    </td>
+                </tr>
+                <tr class="row-host-stamm">
+                    <th scope="row">
+                        <label for="host_stamm">Host Stamm</label>
+                    </th>
+                    <td>
+                        <input type="text" name="host_stamm" id="host_stamm" class="regular-text" value="" required="required" />
                     </td>
                 </tr>
             </tbody>

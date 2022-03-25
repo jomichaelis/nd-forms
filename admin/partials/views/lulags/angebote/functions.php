@@ -68,7 +68,7 @@ function _insert_LulagsRecord( $args = array() ) {
 		'title'			=> '',
 		'description' 	=> '',
 		'event_type'   	=> 0,
-		'group_type'  	=> 0,
+		'altersstufe'  	=> 0,
 		'attendees'   	=> 0,
 	);
 

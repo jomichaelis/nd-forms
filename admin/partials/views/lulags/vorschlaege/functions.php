@@ -69,7 +69,8 @@ function _insert_LulagsSuggestionRecord( $args = array() ) {
 		'title'			=> '',
 		'description' 	=> '',
 		'event_type'   	=> 0,
-		'group_type'  	=> 0,
+		'altersstufe'  	=> 0,
+		'attendees'  	=> 0
 	);
 
 	$args       = wp_parse_args( $args, $defaults );

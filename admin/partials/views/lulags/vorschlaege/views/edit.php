@@ -44,12 +44,20 @@
                         </select>
                     </td>
                 </tr>
-                <tr class="row-group-type">
+                <tr class="row-altersstufe">
                     <th scope="row">
-                        <label for="group_type">Altersgruppe</label>
+                        <label for="altersstufe">Altersgruppe</label>
                     </th>
                     <td>
-                        <input type="text" name="group_type" id="group_type" class="regular-text" placeholder="z.B. Sipplinge, Rover" value="<?php echo esc_attr( $item->group_type ); ?>" />
+                        <input type="text" name="altersstufe" id="altersstufe" class="regular-text" placeholder="z.B. Sipplinge, Rover" value="<?php echo stripslashes( esc_attr( $item->altersstufe ) ); ?>" />
+                    </td>
+                </tr>
+                <tr class="row-attendees">
+                    <th scope="row">
+                        <label for="attendees">TN-Anzahl</label>
+                    </th>
+                    <td>
+                        <input type="number" name="attendees" id="attendees" value=<?php echo stripslashes( esc_attr( $item->attendees ) ); ?> min=0 />
                     </td>
                 </tr>
             </tbody>

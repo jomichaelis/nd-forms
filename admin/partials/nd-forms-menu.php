@@ -27,20 +27,40 @@ class ND_Forms_Menu {
 			'ND-Forms',
 			'ND-Forms',
 			'edit_pages',
-			'nd-forms',
-			array( $this, 'nd_forms_main_page' ),
+			'nd-forms-lulags',
+			array( $this, 'nd_forms_lulags_page' ),
 			$icon_data_uri,
 			26
 		);
 
 		add_submenu_page(
-			'nd-forms',
-			'ND-Forms',
-			'ND-Forms',
+			'nd-forms-lulags',
+			'L&L/AGs',
+			'L&L/AGs',
 			'edit_pages',
-			'nd-forms',
-			array( $this, 'nd_forms_main_page' ),
+			'nd-forms-lulags',
+			array( $this, 'nd_forms_lulags_page' ),
 			10
+		);
+
+		add_submenu_page(
+			'nd-forms-lulags',
+			'Dorfplatzangebote',
+			'Dorfplatzangebote',
+			'edit_pages',
+			'nd-forms-dorfplatz',
+			array( $this, 'nd_forms_dpas_page' ),
+			20
+		);
+
+		add_submenu_page(
+			'nd-forms-lulags',
+			'Mittagsbuden',
+			'Mittagsbuden',
+			'edit_pages',
+			'nd-forms-buden',
+			array( $this, 'nd_forms_mbs_page' ),
+			30
 		);
 	}
 
@@ -51,5 +71,32 @@ class ND_Forms_Menu {
 	 */
 	public function nd_forms_main_page() {
 		include dirname(__FILE__) . '/views/main.php';
+	}
+
+	/**
+	 * Handles the plugin page
+	 *
+	 * @return void
+	 */
+	public function nd_forms_lulags_page() {
+		include dirname(__FILE__) . '/views/lulags/main-view.php';
+	}
+
+	/**
+	 * Handles the plugin page
+	 *
+	 * @return void
+	 */
+	public function nd_forms_dpas_page() {
+		include dirname(__FILE__) . '/views/dpas/main-view.php';
+	}
+
+	/**
+	 * Handles the plugin page
+	 *
+	 * @return void
+	 */
+	public function nd_forms_mbs_page() {
+		include dirname(__FILE__) . '/views/mbs/main-view.php';
 	}
 }
