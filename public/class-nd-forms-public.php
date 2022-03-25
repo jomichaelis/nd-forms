@@ -74,6 +74,7 @@ class ND_Forms_Public {
 	public function register_shortcodes() {
 		add_shortcode( 'nd_forms_lulags_table', array( $this, 'shortcode_nd_forms_lulags_table') );
 		add_shortcode( 'nd_forms_lulags_form', array( $this, 'shortcode_nd_forms_lulags_form') );
+		add_shortcode( 'nd_forms_lulags_form_protected', array( $this, 'shortcode_nd_forms_lulags_form_protected') );
 		add_shortcode( 'nd_forms_ajax_form', array( $this, 'shortcode_nd_forms_ajax_form') );
 	}
 
@@ -86,6 +87,12 @@ class ND_Forms_Public {
 	public function shortcode_nd_forms_lulags_form() {
 		ob_start();
 		include( plugin_dir_path( __FILE__ ) . 'partials/shortcode-nd-forms-lulags-form.php' );
+		return ob_get_clean();
+	}
+
+	public function shortcode_nd_forms_lulags_form_protected() {
+		ob_start();
+		include( plugin_dir_path( __FILE__ ) . 'partials/shortcode-nd-forms-lulags-table-protected.php' );
 		return ob_get_clean();
 	}
 
