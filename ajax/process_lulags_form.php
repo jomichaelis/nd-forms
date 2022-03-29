@@ -18,6 +18,7 @@ if( filter_var( $_POST["signinrightnow"], FILTER_VALIDATE_BOOLEAN ) === true ) {
 			'altersstufe'	=> filter_var( trim( $_POST["altersstufe"] ), FILTER_SANITIZE_STRING),
 			'attendees'		=> filter_var( trim( $_POST["attendees"] ), FILTER_SANITIZE_NUMBER_INT),
 			'event_type'	=> filter_var( trim( $_POST["event_type"] ), FILTER_SANITIZE_NUMBER_INT),
+			'material_notes'=> filter_var( trim( $_POST["material_notes"] ), FILTER_SANITIZE_STRING),
 			'host_name'		=> filter_var( trim( $_POST["host_name"] ), FILTER_SANITIZE_STRING),
 			'host_mail'		=> filter_var( trim( $_POST["host_mail"] ), FILTER_SANITIZE_EMAIL),
 			'host_stamm'	=> filter_var( trim( $_POST["host_stamm"] ), FILTER_SANITIZE_STRING),
@@ -41,8 +42,9 @@ if( filter_var( $_POST["signinrightnow"], FILTER_VALIDATE_BOOLEAN ) === true ) {
 			'title'			=> filter_var( trim( $_POST["title"] ), FILTER_SANITIZE_STRING),
 			'description'	=> filter_var( trim( $_POST["description"] ), FILTER_SANITIZE_STRING),
 			'altersstufe'	=> filter_var( trim( $_POST["altersstufe"] ), FILTER_SANITIZE_STRING),
-			'event_type'	=> filter_var( trim( $_POST["event_type"] ), FILTER_SANITIZE_NUMBER_INT),
 			'attendees'		=> filter_var( trim( $_POST["attendees"] ), FILTER_SANITIZE_NUMBER_INT),
+			'event_type'	=> filter_var( trim( $_POST["event_type"] ), FILTER_SANITIZE_NUMBER_INT),
+			'material_notes'=> filter_var( trim( $_POST["material_notes"] ), FILTER_SANITIZE_STRING),
 		)
 	);
 	if( $result ) {

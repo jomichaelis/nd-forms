@@ -43,6 +43,8 @@ $results = $wpdb->get_results( 'SELECT * FROM ' . $table . ' ORDER BY title' );
         <input type="text" id="altersstufe" name="altersstufe" placeholder="z.B. Sipplinge & Rover, oder: vor allem Wölflinge, etc."><br>
         <label for="attendees">Maximale Anzahl Teilnehmer*innen: (0 heißt egal)</label>
         <input type="number" id="attendees" name="attendees" value=0 min=0><br>
+        <label for="material_notes">Anmerkungen zu Material:</label>
+        <textarea type="text" id="material_notes" name="material_notes" rows=4 placeholder="was wird benötigt? Wer besorgt es?"></textarea><br>
         <label for="singinrightnow">Ich möchte diese Aktion betreuen:</label>
         <input type="checkbox" id="singinrightnow" name="singinrightnow" checked="checked"><br>
         <br>
@@ -75,6 +77,7 @@ $results = $wpdb->get_results( 'SELECT * FROM ' . $table . ' ORDER BY title' );
             $('input[name=altersstufe]').val('');
             $('input[name=attendees]').val(0);
             $('select[name=event_type]').val(0);
+            $('textarea[name=material_notes]').val('');
             $('input[name=singinrightnow]').prop('checked', true);
         } else {
             let id = this.value;
@@ -85,6 +88,7 @@ $results = $wpdb->get_results( 'SELECT * FROM ' . $table . ' ORDER BY title' );
             $('input[name=altersstufe]').val(convertAmpersand(angebot.altersstufe));
             $('select[name=event_type]').val(parseInt(angebot.event_type));
             $('input[name=attendees]').val(parseInt(angebot.attendees));
+            $('textarea[name=material_notes]').val(convertAmpersand(angebot.material_notes));
             $('input[name=singinrightnow]').prop('checked', true);
             $('input[name=title]').change(function() {
                 $('select#title-predefined').val('0');
@@ -160,6 +164,7 @@ $results = $wpdb->get_results( 'SELECT * FROM ' . $table . ' ORDER BY title' );
                     altersstufe: $('input[name=altersstufe]', form).val(),
                     attendees: parseInt( $('input[name=attendees]', form).val() ),
                     event_type: parseInt( $('select[name=event_type]', form).val() ),
+                    material_notes: $('textarea[name=material_notes]', form).val(),
                     signinrightnow: $('input[name=singinrightnow]', form).prop('checked'),
                     host_name: $('input[name=host_name]', form).val(),
                     host_mail: $('input[name=host_mail]', form).val(),

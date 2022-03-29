@@ -43,6 +43,7 @@ class ND_Forms_Form_Handler {
 		$event_type = isset( $_POST['event_type'] ) ? intval($_POST['event_type']) : 0;
 		$altersstufe = isset( $_POST['altersstufe'] ) ? sanitize_text_field($_POST['altersstufe']) : '';
 		$attendees = isset( $_POST['attendees'] ) ? intval( $_POST['attendees'] ) : 0;
+		$material_notes = isset( $_POST['material_notes'] ) ? sanitize_text_field($_POST['material_notes']) : '';
 		$host_name = isset( $_POST['host_name'] ) ? sanitize_text_field( $_POST['host_name'] ) : '';
 		$host_mail = isset( $_POST['host_mail'] ) ? sanitize_text_field( $_POST['host_mail'] ) : '';
 		$host_stamm = isset( $_POST['host_stamm'] ) ? sanitize_text_field( $_POST['host_stamm'] ) : '';
@@ -55,6 +56,7 @@ class ND_Forms_Form_Handler {
 			'event_type' 	=> $event_type,
 			'altersstufe' 	=> $altersstufe,
 			'attendees'		=> $attendees,
+			'material_notes'=> $material_notes,
 			'host_name'		=> $host_name,
 			'host_mail'		=> $host_mail,
 			'host_stamm'	=> $host_stamm

@@ -51,6 +51,8 @@ class ND_Forms_Lulags_List extends \WP_List_Table {
 				return $item->altersstufe;
 			case 'attendees':
 				return $item->attendees;
+			case 'material_notes':
+				return $item->material_notes;
 			case 'host_name':
 				return $item->host_name;
 			case 'host_mail':
@@ -75,6 +77,7 @@ class ND_Forms_Lulags_List extends \WP_List_Table {
 			'event_type'   	=> 'Ereignis-Typ',
 			'altersstufe'  	=> 'Altersstufe',
 			'attendees'   	=> 'TN-Anzahl',
+			'material_notes'=> 'Material-Anmerkungen',
 			'host_name'    	=> 'Verantwortliche*r',
 			'host_mail'    	=> 'Mail',
 			'host_stamm'    => 'Stamm'

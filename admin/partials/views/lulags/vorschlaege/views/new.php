@@ -43,10 +43,18 @@
                 </tr>
                 <tr class="row-attendees">
                     <th scope="row">
-                        <label for="attendees">TN-Anzahl</label>
+                        <label for="attendees">max. TN-Anzahl</label>
                     </th>
                     <td>
                         <input type="number" name="attendees" id="attendees" value=0 min=0 />
+                    </td>
+                </tr>
+                <tr class="row-material_notes">
+                    <th scope="row">
+                        <label for="material_notes">Anmerkungen zu Material</label>
+                    </th>
+                    <td>
+                        <textarea name="material_notes" id="material_notes" rows="3" cols="30" placeholder="z.B. 10m Seil / 50 Teelichter"></textarea>
                     </td>
                 </tr>
             </tbody>

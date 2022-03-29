@@ -43,6 +43,7 @@ class ND_Forms_Lulags_Suggestions_Form_Handler {
 		$event_type = isset( $_POST['event_type'] ) ? intval($_POST['event_type']) : 0;
 		$altersstufe = isset( $_POST['altersstufe'] ) ? sanitize_text_field($_POST['altersstufe']) : '';
 		$attendees = isset( $_POST['attendees'] ) ? intval($_POST['attendees']) : 0;
+		$material_notes = isset( $_POST['material_notes'] ) ? sanitize_text_field($_POST['material_notes']) : '';
 
 		// bail out if error found
 
@@ -52,7 +53,8 @@ class ND_Forms_Lulags_Suggestions_Form_Handler {
 			'description' 	=> $description,
 			'event_type' 	=> $event_type,
 			'altersstufe' 	=> $altersstufe,
-			'attendees'		=> $attendees
+			'attendees'		=> $attendees,
+			'material_notes'=> $material_notes,
 		);
 
 		// New or edit?

@@ -16,6 +16,7 @@ $results = $wpdb->get_results( 'SELECT * FROM ' . $table . ' ORDER BY title' );
                 <th>Ereignis-Typ</th>
                 <th>Altersstufe</th>
                 <th>TN-Zahl</th>
+                <th>Material-Anmerkungen</th>
                 <th>Verantwortliche*r</th>
                 <th>E-Mail</th>
                 <th>Stamm</th>
@@ -30,6 +31,7 @@ for($i = 0; $i < count($results); $i++) {
     echo("<td>" . ( $results[$i]->event_type === "0" ? "Land & Leute Aktion" : "AG am Lagerplatz") . "</td>");
     echo("<td>" . $results[$i]->altersstufe . "</td>");
     echo("<td>" . $results[$i]->attendees . "</td>");
+	echo("<td>" . $results[$i]->material_notes . "</td>");
     echo("<td>" . $results[$i]->host_name . "</td>");
     echo("<td>" . $results[$i]->host_mail . "</td>");
     echo("<td>" . $results[$i]->host_stamm . "</td>");

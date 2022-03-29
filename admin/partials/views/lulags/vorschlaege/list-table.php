@@ -53,6 +53,8 @@ class ND_Forms_Lulags_Suggestion_List extends \WP_List_Table {
 				return $item->altersstufe;
 			case 'attendees':
 				return $item->attendees;
+			case 'material_notes':
+				return $item->material_notes;
 			default:
 				return isset( $item->$column_name ) ? $item->$column_name : '';
 		}
@@ -71,6 +73,7 @@ class ND_Forms_Lulags_Suggestion_List extends \WP_List_Table {
 			'event_type'   	=> 'Ereignis-Typ',
 			'altersstufe'  	=> 'Altersstufe',
 			'attendees'  	=> 'max. Teilnehmer',
+			'material_notes'=> 'Material-Anmerkungen',
 		);
 
 		return $columns;

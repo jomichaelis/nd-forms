@@ -23,7 +23,7 @@
 class ND_Forms_Activator {
 
 	public static function activate() {
-		// self::cleanup();
+		self::cleanup();
 		self::create_table_nd_forms_lulags();
 		self::create_table_nd_forms_lulags_suggestions();
 	}
@@ -50,6 +50,7 @@ class ND_Forms_Activator {
     		event_type tinyint NOT NULL DEFAULT 0,
   			altersstufe text NOT NULL DEFAULT '',
     		attendees tinyint NOT NULL DEFAULT 0,
+  			material_notes text NOT NULL DEFAULT '',
     		host_name text NOT NULL DEFAULT '',
     		host_mail text NOT NULL DEFAULT '',
     		host_stamm text NOT NULL DEFAULT '',
@@ -71,6 +72,7 @@ class ND_Forms_Activator {
     		event_type tinyint NOT NULL DEFAULT 0,
   			altersstufe text NOT NULL DEFAULT '',
     		attendees tinyint NOT NULL DEFAULT 0,
+  			material_notes text NOT NULL DEFAULT '',
   			PRIMARY KEY  (id)
 		) $charset_collate;";
 		require_once( ABSPATH . 'wp-admin/includes/upgrade.php' );
