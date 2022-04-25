@@ -17,18 +17,22 @@ $results_sug = $wpdb->get_results(
 		<tbody>
 <?php
 for($i = 0; $i < count($results_sug); $i++) {
+	$class = $results_sug[$i]->event_type == 0 ? "nd_aktion" : "nd_ag";
+	echo("<tr><td class='$class'>");
 	if( $results_sug[$i]->belegt == 1) {
-		if( $results_sug[$i]->event_type == 0 ) {
-			echo(' style="color: #0c4200;"');
-		}
-		echo("<tr><td><s>" . $results_sug[$i]->title) . "</s>*</s></td></tr>";
+		echo("<s>" . $results_sug[$i]->title) . "</s>*";
 	} else {
-		echo("<tr><td>" . $results_sug[$i]->title) . "</td></tr>";
+		echo( $results_sug[$i]->title);
 	}
+    echo("</td></tr>");
 }
+echo("<style>.nd_aktion{color: #167500;}</style>");
+echo("<style>.nd_ag{color: #470675;}</style>");
 ?>
 		</tbody>
 	</table>
 </figure>
 
 <p>* Dafür hat sich bereits eine Person gemeldet.</p>
+<p class="nd_aktion">● Aktion abseits des Lagerplatzes.</p>
+<p class="nd_ag">● AG auf dem Lagerplatz.</p>

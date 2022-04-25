@@ -23,7 +23,7 @@
 class ND_Forms_Activator {
 
 	public static function activate() {
-		self::cleanup();
+		// self::cleanup();
 		self::create_table_nd_forms_lulags();
 		self::create_table_nd_forms_lulags_suggestions();
 	}
