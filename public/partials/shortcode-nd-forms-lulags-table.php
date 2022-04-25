@@ -18,6 +18,9 @@ $results_sug = $wpdb->get_results(
 <?php
 for($i = 0; $i < count($results_sug); $i++) {
 	if( $results_sug[$i]->belegt == 1) {
+		if( $results_sug[$i]->event_type == 0 ) {
+			echo(' style="color: #0c4200;"');
+		}
 		echo("<tr><td><s>" . $results_sug[$i]->title) . "</s>*</s></td></tr>";
 	} else {
 		echo("<tr><td>" . $results_sug[$i]->title) . "</td></tr>";
