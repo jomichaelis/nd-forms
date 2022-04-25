@@ -44,17 +44,17 @@ class ND_Forms_Activator {
 		$charset_collate = $wpdb->get_charset_collate();
 		$sql = "CREATE TABLE IF NOT EXISTS $table_name (
 			id mediumint(9) NOT NULL AUTO_INCREMENT,
-  			suggestion mediumint(9) NOT NULL DEFAULT 0,
-    		title text NOT NULL DEFAULT '',
-  			description text NOT NULL DEFAULT '',
-    		event_type tinyint NOT NULL DEFAULT 0,
-  			altersstufe text NOT NULL DEFAULT '',
-    		attendees tinyint NOT NULL DEFAULT 0,
-  			material_notes text NOT NULL DEFAULT '',
-    		host_name text NOT NULL DEFAULT '',
-    		host_mail text NOT NULL DEFAULT '',
-    		host_stamm text NOT NULL DEFAULT '',
-  			PRIMARY KEY  (id)
+			suggestion mediumint(9) NOT NULL DEFAULT 0,
+			title text NOT NULL DEFAULT '',
+			description text NOT NULL DEFAULT '',
+			event_type tinyint NOT NULL DEFAULT 0,
+			altersstufe text NOT NULL DEFAULT '',
+			attendees tinyint NOT NULL DEFAULT 0,
+			material_notes text NOT NULL DEFAULT '',
+			host_name text NOT NULL DEFAULT '',
+			host_mail text NOT NULL DEFAULT '',
+			host_stamm text NOT NULL DEFAULT '',
+			PRIMARY KEY  (id)
 		) $charset_collate;";
 		require_once( ABSPATH . 'wp-admin/includes/upgrade.php' );
 		dbDelta( $sql );
@@ -66,14 +66,14 @@ class ND_Forms_Activator {
 		$charset_collate = $wpdb->get_charset_collate();
 		$sql = "CREATE TABLE IF NOT EXISTS $table_name (
 			id mediumint(9) NOT NULL AUTO_INCREMENT,
-    		published tinyint NOT NULL DEFAULT 0,
-  			title text NOT NULL DEFAULT '',
-  			description text NOT NULL DEFAULT '',
-    		event_type tinyint NOT NULL DEFAULT 0,
-  			altersstufe text NOT NULL DEFAULT '',
-    		attendees tinyint NOT NULL DEFAULT 0,
-  			material_notes text NOT NULL DEFAULT '',
-  			PRIMARY KEY  (id)
+			published tinyint NOT NULL DEFAULT 0,
+			title text NOT NULL DEFAULT '',
+			description text NOT NULL DEFAULT '',
+			event_type tinyint NOT NULL DEFAULT 0,
+			altersstufe text NOT NULL DEFAULT '',
+			attendees tinyint NOT NULL DEFAULT 0,
+			material_notes text NOT NULL DEFAULT '',
+			PRIMARY KEY  (id)
 		) $charset_collate;";
 		require_once( ABSPATH . 'wp-admin/includes/upgrade.php' );
 		dbDelta( $sql );
